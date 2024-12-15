@@ -49,80 +49,76 @@ Aucune installation specifique n'est necessaire. Il suffit de telecharger ou clo
    chmod +x log_analyzer.sh
 
 
+1. Commande :  
+   ./log_analyzer.sh aggregate <logfile>  
+   Description : Cette commande effectue l'agregation des logs. Il est necessaire de remplacer <logfile> par le nom d'un fichier de logs valide.  
 
-1. Commande : 
-   ./log_analyzer.sh aggregate <logfile>
-   Description : Cette commande ex  cute l'agr  gation des logs. Il est n  cessaire de remplacer <logfile> par le nom d'un fichier de logs valide.
-   
-   Erreur possible : 
-   - Si <logfile> n'est pas remplac   par un fichier valide, le script affichera une erreur d'argument manquant et l'aide du script.
-   - Erreur typique : 
+   Erreur possible :  
+   - Si <logfile> n'est pas remplace par un fichier valide, le script affichera une erreur d'argument manquant et l'aide du script.
+
+---
+
+2. Commande :  
+   ./log_analyzer.sh temporal_analysis <logfile>  
+   Description : Cette commande effectue une analyse temporelle des logs. <logfile> doit etre remplace par un fichier valide contenant des logs.  
+
+   Erreur possible :  
+   - Si <logfile> n'est pas remplace par un fichier valide, le script affichera un message d'erreur similaire a celui de la commande precedente.  
+   - Erreur typique :  
      Usage: ./log_analyzer.sh <command> <logfile>
 
 ---
 
-2. Command:
-   ./log_analyzer.sh temporal_analysis <logfile>
-   Description : Cette commande effectue une analyse temporelle des logs. <logfile> doit   tre remplac   par un fichier valide contenant des logs.
+3. Commande :  
+   ./log_analyzer.sh aggregate logfile.log  
+   Description : Cette commande effectue l'agregation des logs dans le fichier logfile.log. Elle calcule le nombre d'occurrences pour chaque niveau de log et identifie les messages les plus frequents et les moins frequents.  
 
-   Erreur possible : 
-   - Si <logfile> n'est pas remplac   par un fichier valide, le script affichera un message d'erreur similaire    celui de la commande pr  c  dente.
-   - Erreur typique : 
+   Erreur possible :  
+   - Fichier inexistant ou illisible : Si logfile.log n'existe pas ou n'est pas lisible, le script arrettera l'execution avec un message d'erreur.  
+   - Erreur typique :  
+     Error: File 'logfile.log' is either not found or not readable!  
+   - Cause : Cela peut etre du a une erreur de chemin d'acces, ou des permissions de fichier insuffisantes.
+
+---
+
+4. Commande :  
+   ./log_analyzer.sh temporal_analysis logfile.log  
+   Description : Cette commande effectue l'analyse temporelle sur le fichier logfile.log. Elle identifie les jours et heures les plus actifs, ainsi que les heures avec le plus grand nombre d'erreurs (error et fatal).  
+
+   Erreur possible :  
+   - Fichier inexistant ou illisible : Si le fichier logfile.log n'existe pas ou si ses permissions sont incorrectes, le script renverra une erreur similaire a celle mentionnee ci-dessus.  
+   - Erreur typique :  
+     Error: File 'logfile.log' is either not found or not readable!  
+   - Cause : Cela est du a une erreur dans le chemin d'acces du fichier ou a des restrictions de permissions.
+
+---
+
+5. Commande :  
+   ./log_analyzer.sh aggregate <logfile>  
+   Description : Cette commande est une repetition de la premiere, mais cette fois avec une syntaxe correcte en remplaçant <logfile> par un fichier reel.  
+
+   Erreur possible :  
+   - Meme erreur que precedemment si <logfile> n'est pas remplace par un fichier valide.  
+   - Erreur typique :  
+     Error: File '<logfile>' is either not found or not readable!  
+   - Cause : L'utilisateur doit s'assurer que <logfile> soit remplace par le nom reel du fichier a analyser.
+
+---
+
+### Resume des erreurs possibles et de leurs causes :  
+1. Erreur d'argument manquant ou invalide : Cela se produit si les arguments fournis au script sont incomplets ou incorrects. Par exemple, ne pas specifier le nom du fichier de log.  
+   - Exemple :  
      Usage: ./log_analyzer.sh <command> <logfile>
 
----
-
-3. Command:
-   ./log_analyzer.sh aggregate logfile.log
-   Description : Cette commande effectue l'agr  gation des logs dans le fichier logfile.log. Elle calcule le nombre d'occurrences pour chaque niveau de log et identifie les messages les plus fr  quents et les moins fr  quents.
-
-   Erreur possible : 
-   - Fichier inexistant ou illisible : Si logfile.log n'existe pas ou n'est pas lisible, le script arr  tera l'ex  cution avec un message d'erreur.
-   - Erreur typique : 
-     Error: File 'logfile.log' is either not found or not readable!
-   - Cause : Cela peut   tre d      une erreur de chemin d'acc  s, ou des permissions de fichier insuffisantes.
-
----
-
-4. Command:
-   ./log_analyzer.sh temporal_analysis logfile.log
-   Description : Cette commande effectue l'analyse temporelle sur le fichier logfile.log. Elle identifie les jours et heures les plus actifs, ainsi que les heures avec le plus grand nombre d'erreurs (error et fatal).
-
-   Erreur possible : 
-   - Fichier inexistant ou illisible : Si le fichier logfile.log n'existe pas ou si ses permissions sont incorrectes, le script renverra une erreur similaire    celle mentionn  e ci-dessus.
-   - Erreur typique : 
-     Error: File 'logfile.log' is either not found or not readable!
-   - Cause : Cela est d      une erreur dans le chemin d'acc  s du fichier ou    des restrictions de permissions.
-
----
-
-
-
-5. Command:
-   ./log_analyzer.sh aggregate <logfile>
-   Description : Cette commande est une r  p  tition de la premi  re, mais cette fois avec une syntaxe correcte en rempla  ant <logfile> par un fichier r  el.
-
-   Erreur possible : 
-   - M  me erreur que pr  c  demment si <logfile> n'est pas remplac   par un fichier valide.
-   - Erreur typique : 
-     Error: File '<logfile>' is either not found or not readable!
-   - Cause : L'utilisateur doit s'assurer que <logfile> soit remplac   par le nom r  el du fichier    analyser.
-
----
-
-### R  sum   des erreurs possibles et de leurs causes :
-1. Erreur d'argument manquant ou invalide : Cela se produit si les arguments fournis au script sont incomplets ou incorrects. Par exemple, ne pas sp  cifier le nom du fichier de log.
-   - Exemple : 
-     Usage: ./log_analyzer.sh <command> <logfile>
-
-2. Fichier non trouv   ou illisible : Cela se produit si le fichier de log sp  cifi   n'existe pas dans le r  pertoire ou si le script n'a pas la permission de le lire.
-   - Exemple :
+2. Fichier non trouve ou illisible : Cela se produit si le fichier de log specifie n'existe pas dans le repertoire ou si le script n'a pas la permission de le lire.  
+   - Exemple :  
      Error: File 'logfile.log' is either not found or not readable!
 
-3. Fichier incorrect ou inexistant : L'utilisateur doit s'assurer que le fichier existe et qu'il peut   tre ouvert (permissions).
-   - Exemple :
+3. Fichier incorrect ou inexistant : L'utilisateur doit s'assurer que le fichier existe et qu'il peut etre ouvert (permissions).  
+   - Exemple :  
      Error: File '<logfile>' is either not found or not readable!
 
-### Conclusion
-Le script peut   chouer pour plusieurs raisons : arguments incorrects, fichiers manquants ou mal format  s, ou permissions insuffisantes. Il est essentiel de s'assurer que tous les arguments sont fournis correctement et que le fichier de log est >
->>>>>>> dcf5977 (Initial commit - adding tp_scripting_shell project)
+### Conclusion  
+Le script peut echouer pour plusieurs raisons : arguments incorrects, fichiers manquants ou mal formates, ou permissions insuffisantes. Il est essentiel de s'assurer que tous les arguments sont fournis correctement et que le fichier de log est accessible.
+"""
+
